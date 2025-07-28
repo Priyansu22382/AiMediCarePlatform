@@ -21,7 +21,7 @@ scheduleReminders();
 
 // ✅ CORS Setup
 app.use(cors({
-  origin: "http://localhost:5174", // Replace with your frontend URL
+  origin: "https://aimedicare.netlify.app", // Replace with your frontend URL
   credentials: true,
 }));
 
