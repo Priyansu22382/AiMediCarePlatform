@@ -197,106 +197,108 @@ const PatientDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex items-center justify-center font-['Inter']">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center font-['Poppins']">
         <div className="text-center">
           <div className="relative">
-            <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
-            <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-purple-400 rounded-full animate-spin" style={{animationDuration: '1.5s', animationDirection: 'reverse'}}></div>
+            <div className="w-20 h-20 border-4 border-cyan-300 border-t-cyan-500 rounded-full animate-spin"></div>
+            <div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-pink-400 rounded-full animate-spin" style={{animationDuration: '2s', animationDirection: 'reverse'}}></div>
+            <div className="absolute inset-2 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin" style={{animationDuration: '1.5s'}}></div>
           </div>
-          <div className="mt-6 text-purple-400 font-medium text-lg">Loading your dashboard...</div>
+          <div className="mt-8 text-cyan-300 font-semibold text-xl tracking-wide">INITIALIZING DASHBOARD</div>
+          <div className="mt-2 text-pink-300 text-sm">Please wait while we load your data...</div>
         </div>
       </div>
     );
   }
 
       return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black font-['Inter']">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 font-['Poppins']">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8">
                   {/* Header */}
-        <header className="bg-gray-800/90 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-purple-500/20 animate-fade-in-up">
+        <header className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-cyan-500/30 animate-fade-in-up">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <div className="relative group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
-                  <span className="text-2xl sm:text-3xl">🧠</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 rounded-3xl flex items-center justify-center shadow-2xl group-hover:shadow-cyan-500/50 group-hover:scale-110 transition-all duration-500">
+                  <span className="text-3xl sm:text-4xl">⚡</span>
                 </div>
-                <div className="absolute -inset-1 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-3xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
               </div>
               <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-br from-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight">
-                  AI Medicare
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent tracking-tight">
+                  AI MEDICARE
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base font-medium mt-1">Patient Dashboard</p>
+                <p className="text-cyan-300 text-sm sm:text-base font-semibold mt-2 tracking-wide">PATIENT DASHBOARD</p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
               <button 
                 onClick={toggleForm}
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-br from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 rounded-2xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-2xl font-bold text-white transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transform border border-cyan-400/30"
               >
-                <span className="relative z-10 flex items-center space-x-2">
-                  <span className="text-lg">+</span>
-                  <span>Add Medication</span>
+                <span className="relative z-10 flex items-center space-x-3 text-lg">
+                  <span className="text-2xl">⚡</span>
+                  <span>ADD MEDICATION</span>
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </button>
               <button 
                 onClick={() => { localStorage.clear(); window.location.href = '/login'; }}
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-br from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 rounded-2xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-br from-pink-500 to-red-600 hover:from-pink-400 hover:to-red-500 rounded-2xl font-bold text-white transition-all duration-500 shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transform border border-pink-400/30"
               >
-                <span className="relative z-10">Logout</span>
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-pink-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10 text-lg">LOGOUT</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </button>
             </div>
           </div>
         </header>
 
         {/* Patient Info Card */}
-        <div className="bg-gray-800/90 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-purple-500/20 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+        <div className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-cyan-500/30 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
           <div className="flex-1">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6">
-              Welcome back, <span className="bg-gradient-to-br from-purple-400 to-pink-400 bg-clip-text text-transparent">{patient?.name}</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-8">
+              WELCOME BACK, <span className="bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent">{patient?.name?.toUpperCase()}</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-300">
-              <div className="group bg-gray-700/50 p-4 rounded-2xl border border-gray-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20">
-                <p className="text-sm text-purple-400 font-semibold mb-2 flex items-center">
-                  <span className="mr-2">📧</span> Email
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-white">
+              <div className="group bg-gradient-to-br from-cyan-900/30 to-blue-900/30 p-6 rounded-3xl border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/30 hover:scale-105 transform">
+                <p className="text-sm text-cyan-300 font-bold mb-3 flex items-center tracking-wide">
+                  <span className="mr-3 text-xl">📧</span> EMAIL
                 </p>
-                <p className="font-mono text-white text-sm">{patient?.email}</p>
+                <p className="font-mono text-white text-lg font-semibold">{patient?.email}</p>
               </div>
-              <div className="group bg-gray-700/50 p-4 rounded-2xl border border-gray-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20">
-                <p className="text-sm text-purple-400 font-semibold mb-2 flex items-center">
-                  <span className="mr-2">📱</span> Contact
+              <div className="group bg-gradient-to-br from-blue-900/30 to-indigo-900/30 p-6 rounded-3xl border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 transform">
+                <p className="text-sm text-blue-300 font-bold mb-3 flex items-center tracking-wide">
+                  <span className="mr-3 text-xl">📱</span> CONTACT
                 </p>
-                <p className="font-mono text-white text-sm">+91 {patient?.contactNumber}</p>
+                <p className="font-mono text-white text-lg font-semibold">+91 {patient?.contactNumber}</p>
               </div>
             </div>
           </div>
           
           {patient?.caretaker && (
-            <div className="mt-8 p-6 sm:p-8 bg-gray-700/50 rounded-3xl border border-gray-600/30 shadow-lg">
-              <h3 className="text-xl sm:text-2xl font-bold text-purple-400 mb-6 flex items-center">
-                <span className="mr-3 text-2xl sm:text-3xl">👨‍⚕️</span> Assigned Caretaker
+            <div className="mt-10 p-8 sm:p-10 bg-gradient-to-br from-indigo-900/30 to-purple-900/30 rounded-3xl border border-indigo-500/30 shadow-2xl shadow-indigo-500/20">
+              <h3 className="text-2xl sm:text-3xl font-black text-indigo-300 mb-8 flex items-center tracking-wide">
+                <span className="mr-4 text-3xl sm:text-4xl">👨‍⚕️</span> ASSIGNED CARETAKER
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div className="group bg-gray-800/50 p-4 rounded-2xl border border-gray-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20">
-                  <p className="text-purple-400 font-semibold mb-2 text-sm">Name</p>
-                  <p className="font-mono text-white text-sm">{patient.caretaker.name}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="group bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-3xl border border-purple-500/30 hover:border-purple-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105 transform">
+                  <p className="text-purple-300 font-bold mb-3 text-sm tracking-wide">NAME</p>
+                  <p className="font-mono text-white text-lg font-semibold">{patient.caretaker.name}</p>
                 </div>
-                <div className="group bg-gray-800/50 p-4 rounded-2xl border border-gray-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20">
-                  <p className="text-purple-400 font-semibold mb-2 text-sm">Email</p>
-                  <p className="font-mono text-white text-sm">{patient.caretaker.email}</p>
+                <div className="group bg-gradient-to-br from-pink-900/30 to-red-900/30 p-6 rounded-3xl border border-pink-500/30 hover:border-pink-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-pink-500/30 hover:scale-105 transform">
+                  <p className="text-pink-300 font-bold mb-3 text-sm tracking-wide">EMAIL</p>
+                  <p className="font-mono text-white text-lg font-semibold">{patient.caretaker.email}</p>
                 </div>
-                <div className="group bg-gray-800/50 p-4 rounded-2xl border border-gray-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20">
-                  <p className="text-purple-400 font-semibold mb-2 text-sm">Phone</p>
-                  <p className="font-mono text-white text-sm">+91 {patient.caretaker.contactNumber}</p>
+                <div className="group bg-gradient-to-br from-red-900/30 to-orange-900/30 p-6 rounded-3xl border border-red-500/30 hover:border-red-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/30 hover:scale-105 transform">
+                  <p className="text-red-300 font-bold mb-3 text-sm tracking-wide">PHONE</p>
+                  <p className="font-mono text-white text-lg font-semibold">+91 {patient.caretaker.contactNumber}</p>
                 </div>
               </div>
             </div>
@@ -304,20 +306,20 @@ const PatientDashboard = () => {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-3 bg-gray-800/90 backdrop-blur-xl rounded-3xl p-3 border border-gray-700/30 shadow-2xl shadow-purple-500/20 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+        <div className="flex flex-wrap gap-4 bg-black/40 backdrop-blur-2xl rounded-3xl p-4 border border-white/10 shadow-2xl shadow-cyan-500/30 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
           {['overview', 'medications', 'analytics', 'logs'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 text-sm sm:text-base ${
+              className={`group relative px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold transition-all duration-500 text-sm sm:text-base tracking-wide ${
                 activeTab === tab
-                  ? 'bg-gradient-to-br from-purple-500 to-pink-600 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                  ? 'bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/50'
+                  : 'text-cyan-300 hover:text-white hover:bg-gradient-to-br hover:from-cyan-900/50 hover:to-blue-900/50 border border-cyan-500/30'
               }`}
             >
-              <span className="relative z-10">{tab.charAt(0).toUpperCase() + tab.slice(1)}</span>
+              <span className="relative z-10">{tab.toUpperCase()}</span>
               {activeTab === tab && (
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               )}
             </button>
           ))}
@@ -325,16 +327,16 @@ const PatientDashboard = () => {
 
         {/* Add Medication Form - Global */}
         {showForm && (
-          <div className="bg-gray-800/90 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-purple-500/20 animate-slide-in-top">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 flex items-center">
-              <span className="mr-3 text-2xl sm:text-3xl">➕</span> Add New Medication
+          <div className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-cyan-500/30 animate-slide-in-top">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-8 flex items-center tracking-wide">
+              <span className="mr-4 text-3xl sm:text-4xl">⚡</span> ADD NEW MEDICATION
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {["name", "dosage", "frequency"].map((field) => (
                 <div key={field}>
-                  <label className="block text-purple-400 text-sm font-semibold mb-2">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                  <label className="block text-cyan-300 text-sm font-bold mb-3 tracking-wide">{field.toUpperCase()}</label>
                   <input
-                    className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 placeholder-gray-400"
+                    className="w-full bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border border-cyan-500/30 text-white p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-500 placeholder-cyan-300/50 font-semibold"
                     placeholder={`Enter ${field}`}
                     value={newMed[field]}
                     onChange={e => setNewMed({ ...newMed, [field]: e.target.value })}
@@ -342,34 +344,34 @@ const PatientDashboard = () => {
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               <div>
-                <label className="block text-purple-400 text-sm font-semibold mb-2">Start Date</label>
+                <label className="block text-cyan-300 text-sm font-bold mb-3 tracking-wide">START DATE</label>
                 <input
                   type="date"
-                  className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                  className="w-full bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border border-cyan-500/30 text-white p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-500 font-semibold"
                   value={newMed.startDate}
                   onChange={e => setNewMed({ ...newMed, startDate: e.target.value })}
                 />
               </div>
               <div>
-                <label className="block text-purple-400 text-sm font-semibold mb-2">End Date</label>
+                <label className="block text-cyan-300 text-sm font-bold mb-3 tracking-wide">END DATE</label>
                 <input
                   type="date"
-                  className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                  className="w-full bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border border-cyan-500/30 text-white p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-500 font-semibold"
                   value={newMed.endDate}
                   onChange={e => setNewMed({ ...newMed, endDate: e.target.value })}
                 />
               </div>
             </div>
-            <div className="mb-6">
-              <label className="block text-purple-400 text-sm font-semibold mb-2">Reminder Times</label>
-              <div className="flex flex-wrap gap-3">
+            <div className="mb-8">
+              <label className="block text-cyan-300 text-sm font-bold mb-3 tracking-wide">REMINDER TIMES</label>
+              <div className="flex flex-wrap gap-4">
                 {newMed.reminders.map((time, index) => (
-                  <div key={index} className="flex items-center space-x-2">
+                  <div key={index} className="flex items-center space-x-3">
                     <input
                       type="time"
-                      className="bg-gray-700/50 border border-gray-600/30 text-white p-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                      className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border border-cyan-500/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-500 font-semibold"
                       value={time}
                       onChange={(e) => {
                         const updated = [...newMed.reminders];
@@ -378,7 +380,7 @@ const PatientDashboard = () => {
                       }}
                     />
                     <button
-                      className="text-red-400 hover:text-red-300 transition-colors text-lg font-bold hover:scale-110 transform"
+                      className="text-red-400 hover:text-red-300 transition-colors text-xl font-bold hover:scale-125 transform duration-300"
                       onClick={() => {
                         const updated = newMed.reminders.filter((_, i) => i !== index);
                         setNewMed({ ...newMed, reminders: updated });
@@ -390,33 +392,33 @@ const PatientDashboard = () => {
                 ))}
                 <button
                   onClick={() => setNewMed({ ...newMed, reminders: [...newMed.reminders, ""] })}
-                  className="group px-4 py-2 bg-gradient-to-br from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 rounded-xl text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                  className="group px-6 py-3 bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-xl text-white font-bold transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transform border border-cyan-400/30"
                 >
-                  + Add Time
+                  + ADD TIME
                 </button>
               </div>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex space-x-6">
               <button
                 onClick={handleAddMed}
                 disabled={isSubmitting}
-                className={`flex-1 group relative font-semibold py-3 px-6 rounded-2xl transition-all duration-300 text-base shadow-lg hover:shadow-xl hover:scale-105 transform ${
+                className={`flex-1 group relative font-bold py-4 px-8 rounded-2xl transition-all duration-500 text-lg shadow-2xl hover:shadow-2xl hover:scale-110 transform ${
                   isSubmitting
                     ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                    : 'bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white'
+                    : 'bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white border border-green-400/30'
                 }`}
               >
-                <span className="relative z-10">{isSubmitting ? 'Adding...' : 'Add Medication'}</span>
+                <span className="relative z-10">{isSubmitting ? 'ADDING...' : 'ADD MEDICATION'}</span>
                 {!isSubmitting && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-emerald-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 )}
               </button>
               <button
                 onClick={() => setShowForm(false)}
-                className="group relative px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="group relative px-8 py-4 bg-gradient-to-br from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white font-bold rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-2xl hover:scale-110 transform border border-gray-500/30"
               >
-                <span className="relative z-10">Cancel</span>
-                <div className="absolute inset-0 bg-gray-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">CANCEL</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-500 to-gray-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </button>
             </div>
           </div>
