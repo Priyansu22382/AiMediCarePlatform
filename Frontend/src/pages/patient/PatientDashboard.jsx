@@ -167,7 +167,7 @@ const PatientDashboard = () => {
     plugins: {
       legend: {
         labels: {
-          color: '#e2e8f0',
+          color: '#475569',
           font: {
             size: 12,
             weight: 'bold'
@@ -178,18 +178,18 @@ const PatientDashboard = () => {
     scales: {
       x: {
         ticks: {
-          color: '#94a3b8'
+          color: '#64748b'
         },
         grid: {
-          color: 'rgba(148, 163, 184, 0.1)'
+          color: 'rgba(100, 116, 139, 0.1)'
         }
       },
       y: {
         ticks: {
-          color: '#94a3b8'
+          color: '#64748b'
         },
         grid: {
-          color: 'rgba(148, 163, 184, 0.1)'
+          color: 'rgba(100, 116, 139, 0.1)'
         }
       }
     }
@@ -197,94 +197,114 @@ const PatientDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
-          <div className="text-purple-400 text-lg font-semibold animate-pulse">
-            Loading...
+          <div className="relative">
+            <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+            <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin" style={{animationDuration: '1.5s', animationDirection: 'reverse'}}></div>
           </div>
+          <div className="mt-6 text-blue-600 font-medium text-lg">Loading your dashboard...</div>
         </div>
       </div>
     );
   }
 
-    return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black">
-      {/* Simple background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-blue-900/10"></div>
+      return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 font-['Inter']">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
+      </div>
 
-              <div className="relative z-10 px-4 sm:px-6 py-4 sm:py-8 space-y-6 sm:space-y-8">
-          {/* Header */}
-          <header className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8">
+                  {/* Header */}
+        <header className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10 animate-fade-in-up">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+            <div className="flex items-center space-x-4">
+              <div className="relative group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
                   <span className="text-2xl sm:text-3xl">🧠</span>
                 </div>
-                <div>
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                    AI MEDICARE
-                  </h1>
-                  <p className="text-gray-400 text-xs sm:text-sm font-medium">Patient Dashboard</p>
-                </div>
+                <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
               </div>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
-                <button 
-                  onClick={toggleForm}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg"
-                >
-                  + Add Medication
-                </button>
-                <button 
-                  onClick={() => { localStorage.clear(); window.location.href = '/login'; }}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg"
-                >
-                  Logout
-                </button>
+              <div>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-br from-blue-600 to-indigo-700 bg-clip-text text-transparent tracking-tight">
+                  AI Medicare
+                </h1>
+                <p className="text-slate-600 text-sm sm:text-base font-medium mt-1">Patient Dashboard</p>
               </div>
             </div>
-          </header>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+              <button 
+                onClick={toggleForm}
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 rounded-2xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+              >
+                <span className="relative z-10 flex items-center space-x-2">
+                  <span className="text-lg">+</span>
+                  <span>Add Medication</span>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+              <button 
+                onClick={() => { localStorage.clear(); window.location.href = '/login'; }}
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-br from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 rounded-2xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+              >
+                <span className="relative z-10">Logout</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-pink-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+            </div>
+          </div>
+        </header>
 
         {/* Patient Info Card */}
-        <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-2xl sm:text-3xl">👤</span>
+        <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-6 sm:space-y-0 sm:space-x-8">
+            <div className="relative group">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+                <span className="text-3xl sm:text-4xl">👤</span>
+              </div>
+              <div className="absolute -inset-2 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
             </div>
             <div className="flex-1">
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3">
-                Welcome back, <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">{patient?.name}</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4">
+                Welcome back, <span className="bg-gradient-to-br from-blue-600 to-indigo-700 bg-clip-text text-transparent">{patient?.name}</span>
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-gray-300">
-                <div className="bg-gray-700/50 p-3 rounded-xl border border-gray-600/30">
-                  <p className="text-xs sm:text-sm text-purple-400 font-semibold mb-1">📧 Email</p>
-                  <p className="font-mono text-white text-sm">{patient?.email}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-600">
+                <div className="group bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-2xl border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                  <p className="text-sm text-blue-600 font-semibold mb-2 flex items-center">
+                    <span className="mr-2">📧</span> Email
+                  </p>
+                  <p className="font-mono text-slate-700 text-sm">{patient?.email}</p>
                 </div>
-                <div className="bg-gray-700/50 p-3 rounded-xl border border-gray-600/30">
-                  <p className="text-xs sm:text-sm text-purple-400 font-semibold mb-1">📱 Contact</p>
-                  <p className="font-mono text-white text-sm">+91 {patient?.contactNumber}</p>
+                <div className="group bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-2xl border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                  <p className="text-sm text-blue-600 font-semibold mb-2 flex items-center">
+                    <span className="mr-2">📱</span> Contact
+                  </p>
+                  <p className="font-mono text-slate-700 text-sm">+91 {patient?.contactNumber}</p>
                 </div>
               </div>
             </div>
           </div>
           
           {patient?.caretaker && (
-            <div className="mt-6 p-4 sm:p-6 bg-gray-700/50 rounded-2xl border border-gray-600/30">
-              <h3 className="text-lg sm:text-xl font-bold text-purple-400 mb-4 flex items-center">
-                <span className="mr-2 text-xl sm:text-2xl">👨‍⚕️</span> Assigned Caretaker
+            <div className="mt-8 p-6 sm:p-8 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl border border-indigo-100 shadow-lg">
+              <h3 className="text-xl sm:text-2xl font-bold text-indigo-700 mb-6 flex items-center">
+                <span className="mr-3 text-2xl sm:text-3xl">👨‍⚕️</span> Assigned Caretaker
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                <div className="bg-gray-800/50 p-3 rounded-xl border border-gray-600/30">
-                  <p className="text-purple-400 font-semibold mb-1 text-sm">Name</p>
-                  <p className="font-mono text-white text-sm">{patient.caretaker.name}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="group bg-white/60 p-4 rounded-2xl border border-indigo-100 hover:border-indigo-200 transition-all duration-300 hover:shadow-lg">
+                  <p className="text-indigo-600 font-semibold mb-2 text-sm">Name</p>
+                  <p className="font-mono text-slate-700 text-sm">{patient.caretaker.name}</p>
                 </div>
-                <div className="bg-gray-800/50 p-3 rounded-xl border border-gray-600/30">
-                  <p className="text-purple-400 font-semibold mb-1 text-sm">Email</p>
-                  <p className="font-mono text-white text-sm">{patient.caretaker.email}</p>
+                <div className="group bg-white/60 p-4 rounded-2xl border border-indigo-100 hover:border-indigo-200 transition-all duration-300 hover:shadow-lg">
+                  <p className="text-indigo-600 font-semibold mb-2 text-sm">Email</p>
+                  <p className="font-mono text-slate-700 text-sm">{patient.caretaker.email}</p>
                 </div>
-                <div className="bg-gray-800/50 p-3 rounded-xl border border-gray-600/30">
-                  <p className="text-purple-400 font-semibold mb-1 text-sm">Phone</p>
-                  <p className="font-mono text-white text-sm">+91 {patient.caretaker.contactNumber}</p>
+                <div className="group bg-white/60 p-4 rounded-2xl border border-indigo-100 hover:border-indigo-200 transition-all duration-300 hover:shadow-lg">
+                  <p className="text-indigo-600 font-semibold mb-2 text-sm">Phone</p>
+                  <p className="font-mono text-slate-700 text-sm">+91 {patient.caretaker.contactNumber}</p>
                 </div>
               </div>
             </div>
@@ -292,34 +312,37 @@ const PatientDashboard = () => {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-2 bg-gray-800/80 backdrop-blur-sm rounded-2xl p-2 border border-gray-700/30 shadow-lg">
+        <div className="flex flex-wrap gap-3 bg-white/80 backdrop-blur-xl rounded-3xl p-3 border border-white/20 shadow-xl shadow-blue-500/10 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
           {['overview', 'medications', 'analytics', 'logs'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-3 sm:px-4 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
+              className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeTab === tab
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                  ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg'
+                  : 'text-slate-600 hover:text-slate-800 hover:bg-white/60'
               }`}
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              <span className="relative z-10">{tab.charAt(0).toUpperCase() + tab.slice(1)}</span>
+              {activeTab === tab && (
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              )}
             </button>
           ))}
         </div>
 
         {/* Add Medication Form - Global */}
         {showForm && (
-          <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-              <span className="mr-2 text-xl sm:text-2xl">➕</span> Add New Medication
+          <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10 animate-in slide-in-from-top-4 duration-500">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 flex items-center">
+              <span className="mr-3 text-2xl sm:text-3xl">➕</span> Add New Medication
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               {["name", "dosage", "frequency"].map((field) => (
                 <div key={field}>
-                  <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                  <label className="block text-blue-600 text-sm font-semibold mb-2">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
                   <input
-                    className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                    className="w-full bg-white/60 border border-blue-100 text-slate-700 p-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 placeholder-slate-400"
                     placeholder={`Enter ${field}`}
                     value={newMed[field]}
                     onChange={e => setNewMed({ ...newMed, [field]: e.target.value })}
@@ -329,32 +352,32 @@ const PatientDashboard = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <div>
-                <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">Start Date</label>
+                <label className="block text-blue-600 text-sm font-semibold mb-2">Start Date</label>
                 <input
                   type="date"
-                  className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                  className="w-full bg-white/60 border border-blue-100 text-slate-700 p-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                   value={newMed.startDate}
                   onChange={e => setNewMed({ ...newMed, startDate: e.target.value })}
                 />
               </div>
               <div>
-                <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">End Date</label>
+                <label className="block text-blue-600 text-sm font-semibold mb-2">End Date</label>
                 <input
                   type="date"
-                  className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                  className="w-full bg-white/60 border border-blue-100 text-slate-700 p-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                   value={newMed.endDate}
                   onChange={e => setNewMed({ ...newMed, endDate: e.target.value })}
                 />
               </div>
             </div>
             <div className="mb-6">
-              <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">Reminder Times</label>
-              <div className="flex flex-wrap gap-2">
+              <label className="block text-blue-600 text-sm font-semibold mb-2">Reminder Times</label>
+              <div className="flex flex-wrap gap-3">
                 {newMed.reminders.map((time, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <input
                       type="time"
-                      className="bg-gray-700/50 border border-gray-600/30 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="bg-white/60 border border-blue-100 text-slate-700 p-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                       value={time}
                       onChange={(e) => {
                         const updated = [...newMed.reminders];
@@ -363,7 +386,7 @@ const PatientDashboard = () => {
                       }}
                     />
                     <button
-                      className="text-red-400 hover:text-red-300 transition-colors text-lg font-bold"
+                      className="text-red-500 hover:text-red-600 transition-colors text-lg font-bold hover:scale-110 transform"
                       onClick={() => {
                         const updated = newMed.reminders.filter((_, i) => i !== index);
                         setNewMed({ ...newMed, reminders: updated });
@@ -375,29 +398,33 @@ const PatientDashboard = () => {
                 ))}
                 <button
                   onClick={() => setNewMed({ ...newMed, reminders: [...newMed.reminders, ""] })}
-                  className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white font-semibold transition-all duration-300"
+                  className="group px-4 py-2 bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 rounded-xl text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
                 >
                   + Add Time
                 </button>
               </div>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex space-x-4">
               <button
                 onClick={handleAddMed}
                 disabled={isSubmitting}
-                className={`flex-1 font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-base ${
+                className={`flex-1 group relative font-semibold py-3 px-6 rounded-2xl transition-all duration-300 text-base shadow-lg hover:shadow-xl hover:scale-105 transform ${
                   isSubmitting
-                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white'
+                    ? 'bg-slate-400 text-white cursor-not-allowed'
+                    : 'bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white'
                 }`}
               >
-                {isSubmitting ? 'Adding...' : 'Add Medication'}
+                <span className="relative z-10">{isSubmitting ? 'Adding...' : 'Add Medication'}</span>
+                {!isSubmitting && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-emerald-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                )}
               </button>
               <button
                 onClick={() => setShowForm(false)}
-                className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition-all duration-300"
+                className="group relative px-6 py-3 bg-slate-500 hover:bg-slate-600 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
-                Cancel
+                <span className="relative z-10">Cancel</span>
+                <div className="absolute inset-0 bg-slate-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
           </div>
@@ -405,55 +432,55 @@ const PatientDashboard = () => {
 
         {/* Tab Content */}
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Quick Stats */}
-            <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-                <span className="mr-2 text-xl sm:text-2xl">📊</span> Quick Stats
+            <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <span className="mr-3 text-2xl sm:text-3xl">📊</span> Quick Stats
               </h3>
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex justify-between items-center p-3 sm:p-4 bg-green-900/30 rounded-xl border border-green-500/20">
+              <div className="space-y-4">
+                <div className="group flex justify-between items-center p-4 sm:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100 hover:border-green-200 transition-all duration-300 hover:shadow-lg hover:scale-105 transform">
                   <div>
-                    <p className="text-green-400 text-xs sm:text-sm font-semibold">Total Medications</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-white">{medications.length}</p>
+                    <p className="text-green-600 text-sm font-semibold">Total Medications</p>
+                    <p className="text-3xl sm:text-4xl font-bold text-slate-800">{medications.length}</p>
                   </div>
-                  <div className="text-2xl sm:text-3xl">💊</div>
+                  <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-300">💊</div>
                 </div>
-                <div className="flex justify-between items-center p-3 sm:p-4 bg-blue-900/30 rounded-xl border border-blue-500/20">
+                <div className="group flex justify-between items-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg hover:scale-105 transform">
                   <div>
-                    <p className="text-blue-400 text-xs sm:text-sm font-semibold">Taken Today</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-white">
+                    <p className="text-blue-600 text-sm font-semibold">Taken Today</p>
+                    <p className="text-3xl sm:text-4xl font-bold text-slate-800">
                       {logs.filter(l => l.status === "taken").length}
                     </p>
                   </div>
-                  <div className="text-2xl sm:text-3xl">✅</div>
+                  <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-300">✅</div>
                 </div>
-                <div className="flex justify-between items-center p-3 sm:p-4 bg-red-900/30 rounded-xl border border-red-500/20">
+                <div className="group flex justify-between items-center p-4 sm:p-6 bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl border border-red-100 hover:border-red-200 transition-all duration-300 hover:shadow-lg hover:scale-105 transform">
                   <div>
-                    <p className="text-red-400 text-xs sm:text-sm font-semibold">Missed Today</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-white">
+                    <p className="text-red-600 text-sm font-semibold">Missed Today</p>
+                    <p className="text-3xl sm:text-4xl font-bold text-slate-800">
                       {logs.filter(l => l.status === "missed").length}
                     </p>
                   </div>
-                  <div className="text-2xl sm:text-3xl">❌</div>
+                  <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-300">❌</div>
                 </div>
               </div>
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-                <span className="mr-2 text-xl sm:text-2xl">⚡</span> Recent Activity
+            <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <span className="mr-3 text-2xl sm:text-3xl">⚡</span> Recent Activity
               </h3>
-              <div className="space-y-3 max-h-60 sm:max-h-80 overflow-y-auto">
+              <div className="space-y-4 max-h-80 overflow-y-auto">
                 {logs.slice(0, 5).map((log, index) => (
-                  <div key={log._id} className="flex items-center space-x-3 p-3 bg-gray-700/50 rounded-xl border border-gray-600/30">
-                    <div className={`w-3 h-3 rounded-full ${log.status === 'taken' ? 'bg-green-400' : 'bg-red-400'}`}></div>
+                  <div key={log._id} className="group flex items-center space-x-4 p-4 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                    <div className={`w-3 h-3 rounded-full ${log.status === 'taken' ? 'bg-green-500' : 'bg-red-500'} group-hover:scale-125 transition-transform duration-300`}></div>
                     <div className="flex-1">
-                      <p className="text-white font-semibold text-sm sm:text-base">{log.medication?.name}</p>
-                      <p className="text-purple-400 text-xs sm:text-sm font-medium">{log.status.toUpperCase()}</p>
+                      <p className="text-slate-800 font-semibold text-sm sm:text-base">{log.medication?.name}</p>
+                      <p className={`text-sm font-medium ${log.status === 'taken' ? 'text-green-600' : 'text-red-600'}`}>{log.status.toUpperCase()}</p>
                     </div>
-                    <div className="text-gray-400 text-xs font-mono">
+                    <div className="text-slate-500 text-xs font-mono">
                       {new Date().toLocaleTimeString()}
                     </div>
                   </div>
@@ -466,37 +493,40 @@ const PatientDashboard = () => {
         {activeTab === 'medications' && (
           <div className="space-y-6">
             {/* Medications List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {medications.map((med) => (
-                <div key={med._id} className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
+                <div key={med._id} className="group bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-xl shadow-blue-500/10 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105 transform">
                   <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-lg sm:text-xl font-bold text-white">💊 {med.name}</h4>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-800">💊 {med.name}</h4>
+                    <div className="w-3 h-3 bg-green-500 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                   </div>
-                  <div className="space-y-2 text-sm text-gray-300 mb-4">
-                    <p><span className="text-purple-400 font-semibold">Dosage:</span> {med.dosage}</p>
-                    <p><span className="text-purple-400 font-semibold">Frequency:</span> {med.frequency}</p>
-                    <p><span className="text-purple-400 font-semibold">Start:</span> {new Date(med.startDate).toLocaleDateString()}</p>
-                    <p><span className="text-purple-400 font-semibold">End:</span> {new Date(med.endDate).toLocaleDateString()}</p>
+                  <div className="space-y-3 text-sm text-slate-600 mb-6">
+                    <p><span className="text-blue-600 font-semibold">Dosage:</span> {med.dosage}</p>
+                    <p><span className="text-blue-600 font-semibold">Frequency:</span> {med.frequency}</p>
+                    <p><span className="text-blue-600 font-semibold">Start:</span> {new Date(med.startDate).toLocaleDateString()}</p>
+                    <p><span className="text-blue-600 font-semibold">End:</span> {new Date(med.endDate).toLocaleDateString()}</p>
                   </div>
                   <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                     <button
                       onClick={() => handleAdherence(med._id, "taken")}
-                      className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-2 px-3 rounded-xl font-semibold transition-all duration-300 text-sm"
+                      className="group/btn flex-1 bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-2 px-3 rounded-xl font-semibold transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:scale-105 transform"
                     >
-                      ✅ Taken
+                      <span className="relative z-10">✅ Taken</span>
+                      <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                     </button>
                     <button
                       onClick={() => handleAdherence(med._id, "missed")}
-                      className="flex-1 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white py-2 px-3 rounded-xl font-semibold transition-all duration-300 text-sm"
+                      className="group/btn flex-1 bg-gradient-to-br from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white py-2 px-3 rounded-xl font-semibold transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:scale-105 transform"
                     >
-                      ❌ Missed
+                      <span className="relative z-10">❌ Missed</span>
+                      <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-pink-700 rounded-xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                     </button>
                     <button
                       onClick={() => handleDelete(med._id)}
-                      className="px-3 py-2 bg-gradient-to-r from-gray-700 to-slate-800 hover:from-gray-800 hover:to-slate-900 text-white rounded-xl transition-all duration-300 text-sm"
+                      className="group/btn px-3 py-2 bg-gradient-to-br from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 text-white rounded-xl transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:scale-105 transform"
                     >
-                      🗑️
+                      <span className="relative z-10">🗑️</span>
+                      <div className="absolute inset-0 bg-gradient-to-br from-slate-600 to-slate-700 rounded-xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                     </button>
                   </div>
                 </div>
@@ -506,39 +536,39 @@ const PatientDashboard = () => {
         )}
 
         {activeTab === 'analytics' && (
-          <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-              <span className="mr-2 text-xl sm:text-2xl">📈</span> Adherence Analytics
+          <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 flex items-center">
+              <span className="mr-3 text-2xl sm:text-3xl">📈</span> Adherence Analytics
             </h3>
-            <div className="h-64 sm:h-80 lg:h-96 bg-gray-700/30 rounded-xl p-3 sm:p-4 border border-gray-600/30">
+            <div className="h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-4 sm:p-6 border border-blue-100 shadow-lg">
               <Bar data={adherenceChartData} options={chartOptions} />
             </div>
           </div>
         )}
 
         {activeTab === 'logs' && (
-          <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-              <span className="mr-2 text-xl sm:text-2xl">📋</span> Adherence Logs
+          <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-blue-500/10">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 flex items-center">
+              <span className="mr-3 text-2xl sm:text-3xl">📋</span> Adherence Logs
             </h3>
             {logs.length === 0 ? (
-              <div className="text-center py-8 sm:py-12">
-                <div className="text-4xl sm:text-6xl mb-4">📊</div>
-                <p className="text-gray-300 text-lg sm:text-xl font-semibold mb-2">No logs available yet.</p>
-                <p className="text-gray-500 text-sm">Start tracking your medication adherence to see data here.</p>
+              <div className="text-center py-12 sm:py-16">
+                <div className="text-6xl sm:text-8xl mb-6">📊</div>
+                <p className="text-slate-700 text-xl sm:text-2xl font-semibold mb-3">No logs available yet.</p>
+                <p className="text-slate-500 text-sm">Start tracking your medication adherence to see data here.</p>
               </div>
             ) : (
-              <div className="space-y-3 max-h-80 overflow-y-auto">
+              <div className="space-y-4 max-h-80 overflow-y-auto">
                 {logs.map((log) => (
-                  <div key={log._id} className="flex items-center space-x-4 p-3 sm:p-4 bg-gray-700/50 rounded-xl border border-gray-600/30">
-                    <div className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${log.status === 'taken' ? 'bg-green-400' : 'bg-red-400'}`}></div>
+                  <div key={log._id} className="group flex items-center space-x-4 p-4 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                    <div className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${log.status === 'taken' ? 'bg-green-500' : 'bg-red-500'} group-hover:scale-125 transition-transform duration-300`}></div>
                     <div className="flex-1">
-                      <p className="text-white font-semibold text-sm sm:text-base">{log.medication?.name}</p>
-                      <p className={`text-xs sm:text-sm font-medium ${log.status === 'taken' ? 'text-green-400' : 'text-red-400'}`}>
+                      <p className="text-slate-800 font-semibold text-sm sm:text-base">{log.medication?.name}</p>
+                      <p className={`text-sm font-medium ${log.status === 'taken' ? 'text-green-600' : 'text-red-600'}`}>
                         {log.status.toUpperCase()}
                       </p>
                     </div>
-                    <div className="text-gray-400 text-xs font-mono">
+                    <div className="text-slate-500 text-xs font-mono">
                       {new Date().toLocaleString()}
                     </div>
                   </div>
