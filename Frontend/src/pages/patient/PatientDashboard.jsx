@@ -308,6 +308,101 @@ const PatientDashboard = () => {
           ))}
         </div>
 
+        {/* Add Medication Form - Global */}
+        {showForm && (
+          <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+              <span className="mr-2 text-xl sm:text-2xl">➕</span> Add New Medication
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+              {["name", "dosage", "frequency"].map((field) => (
+                <div key={field}>
+                  <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                  <input
+                    className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                    placeholder={`Enter ${field}`}
+                    value={newMed[field]}
+                    onChange={e => setNewMed({ ...newMed, [field]: e.target.value })}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">Start Date</label>
+                <input
+                  type="date"
+                  className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                  value={newMed.startDate}
+                  onChange={e => setNewMed({ ...newMed, startDate: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">End Date</label>
+                <input
+                  type="date"
+                  className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+                  value={newMed.endDate}
+                  onChange={e => setNewMed({ ...newMed, endDate: e.target.value })}
+                />
+              </div>
+            </div>
+            <div className="mb-6">
+              <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">Reminder Times</label>
+              <div className="flex flex-wrap gap-2">
+                {newMed.reminders.map((time, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <input
+                      type="time"
+                      className="bg-gray-700/50 border border-gray-600/30 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      value={time}
+                      onChange={(e) => {
+                        const updated = [...newMed.reminders];
+                        updated[index] = e.target.value;
+                        setNewMed({ ...newMed, reminders: updated });
+                      }}
+                    />
+                    <button
+                      className="text-red-400 hover:text-red-300 transition-colors text-lg font-bold"
+                      onClick={() => {
+                        const updated = newMed.reminders.filter((_, i) => i !== index);
+                        setNewMed({ ...newMed, reminders: updated });
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+                <button
+                  onClick={() => setNewMed({ ...newMed, reminders: [...newMed.reminders, ""] })}
+                  className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white font-semibold transition-all duration-300"
+                >
+                  + Add Time
+                </button>
+              </div>
+            </div>
+            <div className="flex space-x-3">
+              <button
+                onClick={handleAddMed}
+                disabled={isSubmitting}
+                className={`flex-1 font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-base ${
+                  isSubmitting
+                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white'
+                }`}
+              >
+                {isSubmitting ? 'Adding...' : 'Add Medication'}
+              </button>
+              <button
+                onClick={() => setShowForm(false)}
+                className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition-all duration-300"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Tab Content */}
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
@@ -370,93 +465,6 @@ const PatientDashboard = () => {
 
         {activeTab === 'medications' && (
           <div className="space-y-6">
-            {/* Add Medication Form */}
-            {showForm && (
-              <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-4 sm:p-6 shadow-lg">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-                  <span className="mr-2 text-xl sm:text-2xl">➕</span> Add New Medication
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                  {["name", "dosage", "frequency"].map((field) => (
-                    <div key={field}>
-                      <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
-                      <input
-                        className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
-                        placeholder={`Enter ${field}`}
-                        value={newMed[field]}
-                        onChange={e => setNewMed({ ...newMed, [field]: e.target.value })}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">Start Date</label>
-                    <input
-                      type="date"
-                      className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
-                      value={newMed.startDate}
-                      onChange={e => setNewMed({ ...newMed, startDate: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">End Date</label>
-                    <input
-                      type="date"
-                      className="w-full bg-gray-700/50 border border-gray-600/30 text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
-                      value={newMed.endDate}
-                      onChange={e => setNewMed({ ...newMed, endDate: e.target.value })}
-                    />
-                  </div>
-                </div>
-                <div className="mb-6">
-                  <label className="block text-purple-400 text-xs sm:text-sm font-semibold mb-2">Reminder Times</label>
-                  <div className="flex flex-wrap gap-2">
-                    {newMed.reminders.map((time, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <input
-                          type="time"
-                          className="bg-gray-700/50 border border-gray-600/30 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                          value={time}
-                          onChange={(e) => {
-                            const updated = [...newMed.reminders];
-                            updated[index] = e.target.value;
-                            setNewMed({ ...newMed, reminders: updated });
-                          }}
-                        />
-                        <button
-                          className="text-red-400 hover:text-red-300 transition-colors text-lg font-bold"
-                          onClick={() => {
-                            const updated = newMed.reminders.filter((_, i) => i !== index);
-                            setNewMed({ ...newMed, reminders: updated });
-                          }}
-                        >
-                          ✕
-                        </button>
-                      </div>
-                    ))}
-                    <button
-                      onClick={() => setNewMed({ ...newMed, reminders: [...newMed.reminders, ""] })}
-                      className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white font-semibold transition-all duration-300"
-                    >
-                      + Add Time
-                    </button>
-                  </div>
-                </div>
-                <button
-                  onClick={handleAddMed}
-                  disabled={isSubmitting}
-                  className={`w-full font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-base ${
-                    isSubmitting
-                      ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white'
-                  }`}
-                >
-                  {isSubmitting ? 'Adding...' : 'Add Medication'}
-                </button>
-              </div>
-            )}
-
             {/* Medications List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {medications.map((med) => (
